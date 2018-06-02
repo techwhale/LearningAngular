@@ -48,7 +48,7 @@ export class MediaItemFormComponent {
   }
 
   yearValidator(control) {
-    if (control.value.trim().length == 0) {
+    if (control.value.trim().length === 0) {
       return null;
     }
     let year = parseInt(control.value);
@@ -68,7 +68,7 @@ export class MediaItemFormComponent {
   }
 
   onSubmit(mediaItem) {
-    this.mediaItemService.add(mediaItem);
+    this.mediaItemService.add(mediaItem).subscribe();
   }
 
 }

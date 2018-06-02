@@ -9,7 +9,7 @@ import {MediaItemService} from "./media-item.service";
 })
 export class MediaItemListComponent {
   medium = '';
-  mediaItems;
+  mediaItems = [];
 
   constructor(private mediaItemService: MediaItemService) {}
 
@@ -19,13 +19,15 @@ export class MediaItemListComponent {
 
   getMediaItems(medium) {
     this.medium = medium;
-    this.mediaItemService.get(medium).subscribe(mediaItems => {
-      this.mediaItems= mediaItems;
-    });
+    this.mediaItemService.get(medium)
+      .subscribe(mediaItems => {
+        this.mediaItems = mediaItems;
+      });
   }
 
   onMediaItemDelete(mediaItem) {
-    this.mediaItemService.delete(mediaItem);
+    this.mediaItemService.delete(mediaItem).subscribe( () => {
+      this.getMediaItems(this.medium);
+    });
   }
-
 }
