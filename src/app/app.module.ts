@@ -13,12 +13,14 @@ import {CategoryListPipe} from "./category-list.pipe";
 import {MediaItemService} from "./media-item.service";
 import {lookupListToken, lookupLists} from "./providers";
 import {MockXHRBackend} from "./mock-xhr-backend";
+import {routing} from "./app.routing";
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    routing
   ],
   declarations: [
     AppComponent,
